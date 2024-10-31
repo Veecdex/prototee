@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vhetty minisite</title>
+  <!-- Include Google Fonts for modern thin font -->
+  <link rel="stylesheet" href="fonts/icomoon/style.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/font-awesome.min.css">
+  <!-- Include Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="styles/style.css">
+<style>
+
+
+</style>
+</head>
+<body>
+  <!-- Nav-->
+
+  <div class="header">
+    <div class="header-top">
+      
+    </div>
+    <div class="navbar-container"> <!-- Container for navbar -->
+      <div class="navbar">
+       <div  class="brand-name">Vhetty</div> 
+
+       
+       
+         <div class="social-links">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- Slider -->
+
+  <div class="main-content">
+    <div class="left-container">
+        <div class="image-slider">
+            <div class="slides">
+                <div class="slide">
+                    <img src="images/livingroom.jpg" alt="Slide 1">
+                </div>
+                <div class="slide">
+                    <img src="images/bedroom2.jpg" alt="Slide 2">
+                </div>
+                <div class="slide">
+                    <img src="images/bedroom3.jpg" alt="Slide 3">
+                </div>
+                <div class="slide">
+                  <img src="images/livingroom.jpg" alt="Slide 1">
+              </div>
+              <div class="slide">
+                  <img src="images/bedroom1.jpg" alt="Slide 2">
+              </div>
+              <div class="slide">
+                  <img src="images/bedroom2.jpg" alt="Slide 3">
+              </div>
+            </div>
+            <div class="indicators">
+                <div class="indicator"></div>
+                <div class="indicator"></div>
+                <div class="indicator"></div>
+                <div class="indicator"></div>
+                <div class="indicator"></div>
+                <div class="indicator"></div>
+            </div>
+        </div>
+       
+    
+</div>
+
+    <div class="right-container">
+      <!-- Product containers -->
+      <!-- About Business Container -->
+  <div class="container">
+    <i style="color: rgb(31, 30, 30);" class="fas fa-info-circle icon"></i>
+    <div class="about-text">About Business </div> <img style=" margin-bottom: 10px; margin-top: 5px; height: 100px; width: 100px; right: 30px; border-radius: 10px;" src="images/profile.jpg" alt="">
+    <div class="small-text">
+      This is a business dedicated to providing top-notch services in the industry.
+      This is a business dedicated to providing top-notch services in the industry.
+    </div>
+    <button class="see-more">See More</button>
+  </div>
+
+  <!-- Contact Business Container -->
+  <div class="container">
+    <i style="color: rgb(31, 30, 30); " class="fas fa-address-book icon"></i>
+    <div class="about-text">Contact Business</div>
+    <div class="small-text">
+      Reach out to us via social media for any inquiries or collaborations.
+      Reach out to us via social media for any inquiries or collaborations.
+    </div>
+    <div class="social-links">
+      <a style="padding: 13px;" href="#"><i class="fas fa-phone"></i></a>
+      <a style="padding: 13px;" href="#"><i class="fab fa-whatsapp"></i></a>
+      <a style="padding: 13px;" href="#"><i class="fas fa-envelope"></i></a>
+    </div>
+  </div>
+
+  <!-- Testimonial Container -->
+  <div class="testimonial-container">
+    <div class="testimonial-text">
+      <div class="testimonial-title">Testimonial</div>
+      <div class="testimonial-small-text">
+        This business exceeded my expectations! Their services are top-tier, and I highly recommend them.
+      </div>
+    </div>
+    <div class="testimonial-right">
+      <img class="circle-image" src="images/profile.jpg" alt="">
+      <div class="testimonial-name">John Doe</div>
+      <a href="#" class="see-more-link">See More</a>
+    </div>
+  </div>
+     
+      <!-- Repeat the above product-container for additional products -->
+    
+    </div>
+    <div class="floating-plus" onclick="toggleMenu()">
+      <i class="fas fa-phone"></i>
+    </div>
+  </div>
+  <!-- Floating Plus Button -->
+  
+    <!-- Icon Menu -->
+    
+  <div class="line-container"></div>
+
+  
+<footer class="footer">
+  
+  <div class="copyright">
+      &copy; 2024 Vhetty. All rights reserved.
+  </div>
+</footer>
+
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="typing-text"> Vhetty </div>
+  </div>
+
+  <script>
+    // JavaScript for slider functionality
+    const slides = document.querySelectorAll('.slide');
+    const indicators = document.querySelectorAll('.indicator');
+    let currentSlide = 0;
+
+    function showSlide(index) {
+        slides.forEach((slide, i) => {
+            slide.style.transform = `translateX(-${index * 100}%)`;
+            indicators[i].classList.toggle('active', i === index);
+        });
+    }
+
+    indicators.forEach((indicator, i) => {
+        indicator.addEventListener('click', () => {
+            currentSlide = i;
+            showSlide(currentSlide);
+        });
+    });
+
+    // Automatically cycle through slides
+    setInterval(() => {
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+    }, 3000); // Change slide every 3 seconds
+
+    // Initialize the first slide
+    showSlide(currentSlide);
+</script>
+  <!-- Other content of your website -->
+
+  <script>
+    // JavaScript to dynamically set the numbers (if needed)
+ 
+
+    document.querySelectorAll('.icon-item').forEach((item, index) => {
+      const numberElement = item.querySelector('.icon-number');
+      switch (index) {
+        case 0:
+          numberElement.textContent = iconNumbers.heart;
+          break;
+        case 1:
+          numberElement.textContent = iconNumbers.eye;
+          break;
+        case 2:
+          numberElement.textContent = iconNumbers.share;
+          break;
+        case 3:
+          numberElement.textContent = iconNumbers.bag;
+          break;
+        default:
+          break;
+      }
+    });
+  </script>
+
+<script>
+  // Simulate a 5-second loading time for the preloader
+  window.onload = function() {
+    setTimeout(function() {
+      document.getElementById("preloader").style.display = "none";
+      document.querySelector(".content").style.display = "block";
+    }, 10000); // 10 seconds delay
+  };
+</script>
+</body>
+</html>
+
+
+

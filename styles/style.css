@@ -1,0 +1,681 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap');
+/* Reset default styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+   /* Preloader styles */
+   #preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+  }
+
+  .typing-text {
+    font-size: 2rem;
+    font-weight: 400;
+    color: #1d3557;
+    border-right: 3px solid;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 0;
+    animation: typing 3s steps(5, end), blink 0.7s step-end infinite alternate;
+  }
+
+  /* Typing animation */
+  @keyframes typing {
+    from { width: 0; }
+    to { width: 6.5ch; }
+  }
+
+  @keyframes blink {
+    50% { border-color: transparent; }
+  }
+
+  /* Hide content initially */
+  .content {
+    display: none;
+  }
+body {
+  font-family: 'Poppins', sans-serif;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 10px;
+  background-color: rgb(253, 253, 253);
+  margin: 0;
+  padding-top: 110px; /* Ensure page content does not overlap with fixed header */
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+
+
+.container {
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  padding: 20px;
+  margin-top: 10px;
+  position: relative;
+  transition: transform 0.3s;
+  display: flex;
+  flex-direction: column;
+}
+
+.container:hover {
+  transform: translateY(-5px);
+}
+
+
+
+.about-text {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #1d3557;
+}
+
+.small-text {
+  font-size: 14px;
+  color: #777;
+  margin-bottom: 15px;
+  line-height: 1.6;
+}
+
+.see-more {
+  background-color: #1d3557;
+  color: white;
+  padding: 12px 18px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: center;
+  display: inline-block;
+  margin-top: auto;
+}
+
+.see-more:hover {
+  background-color: #1d3557;
+}
+
+.social-links {
+  display: flex;
+  gap: 5px;
+}
+
+.social-links a  {
+ 
+  background-color: #1d3557;
+  padding: 10px;
+  border-radius: 50%;
+  font-size: 17px;
+  color: white;
+  height: 50px;
+  width: 50px;
+  transition: background-color 0.3s;
+}
+
+.social-links a:hover {
+  background-color: #f0f0f0;
+  color: #555;
+}
+
+/* Testimonial Container */
+.testimonial-container {
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  padding: 20px;
+  margin-top: 10px;
+  position: relative;
+  transition: transform 0.3s;
+  display: flex;
+  flex-direction: column;
+}
+
+.testimonial-text {
+  flex: 1;
+}
+
+.testimonial-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.testimonial-small-text {
+  font-size: 14px;
+  color: #777;
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+.testimonial-right {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.circle-image {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #ddd;
+  margin-bottom: 10px;
+}
+
+.testimonial-name {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.see-more-link {
+  color: #007bff;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.see-more-link:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  body {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .container, .testimonial-container {
+    width: 100%;
+  }
+
+  .testimonial-right {
+    align-items: flex-start;
+  }
+
+  .circle-image {
+    margin-bottom: 5px;
+  }
+
+}
+
+ .brand-name {
+    font-size: 22px;
+    font-weight: bold;
+    color: #1d3557;
+    text-align: center;
+  }
+
+  .icon-menu {
+    display: none;
+    position: fixed;
+    bottom: 100px;
+    right: 20px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    padding: 10px;
+    z-index: 1000;
+  }
+
+  .icon-menu i {
+    font-size: 24px;
+    color: #1d3557;
+    margin: 5px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+
+  .icon-menu i:hover {
+    color: #457b9d;
+  }
+  .floating-plus {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    color: #1d3557;
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    z-index: 1000;
+  }
+
+  .floating-plus:hover {
+    background-color: #457b9d;
+  }
+
+.header {
+  background-color: rgb(253, 253, 253);
+
+
+   color: rgba(29, 28, 28, 0.5); /* White text color for contrast */
+   padding: 20px; /* Padding around the header text */
+   text-align: center; /* Center align header text */
+   background-blend-mode: overlay; /* Optional: blend the background color with the image */
+   position: fixed; /* Fix the header at the top of the page */
+   top: 0; /* Position it at the top */
+   width: 100%; /* Make it full width */
+}
+
+.header {
+   
+
+   color: rgba(29, 28, 28, 0.9); /* Text color, adjusted for contrast */
+   padding: 20px; /* Padding around the header text */
+   text-align: center; /* Center align header text */
+   background-blend-mode: overlay; /* Optional: blend the background color with the image */
+   position: fixed; /* Fix the header at the top of the page */
+   top: 0; /* Position it at the top */
+   width: 100%; /* Make it full width */
+   height: 100px; /* Adjust height as needed */
+   z-index: 10; /* Ensure it appears above other elements */
+   
+   align-items: center; /* Vertically center content */
+   justify-content: center; /* Horizontally center content */
+}
+
+
+.navbar {
+display: flex;
+align-items: center;
+justify-content: space-between;
+padding: 10px 20px;
+border-radius: 15px;
+background-color: rgb(255, 255, 255);
+margin-top: 10px;
+margin: 0 -9px;
+box-shadow: 0 6px 10px rgba(74, 3, 88, 0.1);
+}
+
+.logo-text {
+font-size: 20px;
+font-weight: bold;
+color: #333;
+}
+
+
+.circle {
+width: 30px;
+height: 30px;
+border-radius: 50%;
+background-color: rgb(255, 136, 0);
+display: flex;
+color: #fff;
+justify-content: center;
+align-items: center;
+font-weight: bold;
+margin-left: 10px;
+}
+
+.circle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: rgb(255, 136, 0);
+  display: flex;
+  color: #fff;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+
+
+
+.main-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.left-container {
+  width: 28%;
+ 
+  border-radius: 10px;
+  margin: 0 10px;
+  margin-bottom: 10px; /* Adjust margin between containers  background: linear-gradient(135deg, rgb(74, 13, 145), rgb(59, 9, 117), rgb(148, 65, 196), rgb(72, 21, 92), rgb(106, 6, 131), rgb(72, 4, 99)); */
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.right-container {
+  width: 70%;
+ 
+  background-color: rgb(253, 253, 253); /* Adjust styling as needed */
+  border-radius: 10px;
+  margin-bottom: 5px; /* Adjust margin between containers */
+  padding: 10px;
+  box-sizing: border-box;
+  display: flex;
+ 
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+
+
+/* Media query for mobile */
+@media (max-width: 1100px) {
+  .main-content {
+    flex-direction: column;
+  }
+
+  .left-container,
+  .right-container {
+    width: 100%;
+    margin: 0;
+  }
+
+  .container , .testimonial-container {
+    width: 100%;
+  }
+
+}
+
+
+
+.image-slider {
+        width: 100%;
+        
+        height: 500px;
+        overflow: hidden;
+        position: relative;
+        border-radius: 15px;
+    }
+
+    .slides {
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+    }
+
+    .slide {
+        min-width: 100%;
+        transition: opacity 0.5s ease-in-out;
+    }
+
+    .slide img {
+        width: 100%;
+        height: 500px; /* Ensure the image covers the slide area */
+        object-fit: cover;
+        display: block; /* Remove any inline block spacing issues */
+    }
+
+    .slide::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.4); /* Semi-transparent black overlay */
+        z-index: 1; /* Ensure the overlay is above the image but below any text */
+    }
+
+    .indicators {
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 5px;
+    }
+
+    .indicator {
+        width: 15px;
+        height: 15px;
+        background-color: black;
+        border-radius: 50%;
+        cursor: pointer;
+        opacity: 0.5;
+    }
+
+    .indicator.active {
+        opacity: 1;
+    }
+
+    .line-container {
+position: relative;
+height: 20px;         /* Optional: Set the height to provide some space */
+margin-left: 15px;
+margin-right: 15px;
+}
+
+.line-container::before {
+content: "";
+position: absolute;
+top: 50%;             /* Center the line vertically */
+left: 0;
+right: 0;
+height: 1px;          /* Set the height of the line */
+background-color: rgb(129, 123, 123); /* Set the color of the line */
+}
+
+
+
+.icon-circle {
+background-color: #f4f4f4;
+border-radius: 50%;
+padding: 15px;
+display: flex;
+align-items: center;
+justify-content: center;
+width: 60px;
+height: 60px;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+transition: background-color 0.3s;
+}
+
+.icon-circle i {
+font-size: 24px;
+color: #333;
+}
+
+.icon-circle:hover {
+background-color: #ddd;
+}
+
+
+
+/* General Styles */
+.main-content {
+display: flex;
+}
+
+.left-container {
+position: relative;
+}
+
+/* Slide Indicator Styles (WhatsApp/Facebook Story-like) */
+
+
+/* Icons Styles */
+.icon-container {
+position: absolute;
+top: 50%;
+right: 30px; /* Adjust as needed */
+transform: translateY(-50%);
+display: flex;
+flex-direction: column;
+
+gap: 15px;
+}
+
+.icon {
+font-size: 22px;
+cursor: pointer;
+transition: transform 0.2s;
+color: rgb(253, 253, 253);
+}
+
+.icon:hover {
+transform: scale(1.1);
+}
+.icon-number {
+  font-size: 14px;
+  color: rgb(236, 230, 230);
+  padding: 3px;
+  font-weight: bold;
+  margin-top: 3px;
+}
+
+
+        /* Footer Styles */
+        .footer {
+           
+            color: #333;
+            text-align: center;
+            padding: 20px 0;
+            position: relative;
+            margin-top: 40px;
+            margin-bottom: 100px;
+        }
+
+        .footer .social-icons {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+
+        .footer .social-icons a {
+            color: #333;
+            margin: 0 10px;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer .social-icons a:hover {
+            color: rgb(58, 57, 57);
+        }
+
+        .footer .copyright {
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .footer .social-icons a {
+                font-size: 1.2rem;
+                margin: 0 8px;
+            }
+           
+            .footer .copyright {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .footer .social-icons a {
+                font-size: 1rem;
+                margin: 0 5px;
+            }
+
+            .footer .copyright {
+                font-size: 0.7rem;
+            }
+        }
+
+        .icons {
+          display: flex;
+          justify-content: space-around;
+          padding: 10px;
+          background-color: #fff;
+          border-bottom-left-radius: 15px;
+          border-bottom-right-radius: 15px;
+      }
+
+      .icon-item {
+          display: flex;
+          align-items: center;
+          background-color: #f1f1f1;
+          padding: 10px;
+          
+          justify-content: space-around;
+          border-radius: 50%;
+          margin: 0 5px;
+          transition: background-color 0.3s;
+      }
+
+      .icon-item:hover {
+          background-color: #ddd;
+      }
+
+    
+
+   
+
+      .icon-number {
+          margin-left: 3px;
+          font-size: 0.75rem;
+          color: #555;
+          
+          text-align: center; /* Center the number within the width */
+          
+      }
+
+     
+.nav-button {
+  font-size: 1rem; /* Slightly smaller for a balanced look */
+  color: #fff; /* White color for the icon */
+  background: linear-gradient(135deg, #6207ad, #250544); /* Gradient purple background */
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 20%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Subtle shadow for depth */
+  transition: background 0.3s, transform 0.3s; /* Smooth transitions */
+  
+}
+
+.nav-button:hover {
+  background: linear-gradient(135deg, #520592, #1a0331); /* Slightly darker gradient on hover */
+  transform: scale(1.1); /* Slightly enlarge on hover */
+}
+
+ 
+/* Left side content */
+.left-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 1rem;
+}
+
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  
+
+    .left-content,
+    .right-content {
+        align-items: center;
+        text-align: center;
+        padding: 0.5rem;
+    }
+
+}
+
+

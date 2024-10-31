@@ -1,0 +1,734 @@
+
+<html><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ModernStore - Your Trendy Shopping Destination</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+    
+      :root {
+        --primary-color: #3498db;
+        --secondary-color: #2ecc71;
+        --text-color: #333;
+        --bg-color: #f9f9f9;
+      }
+    
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+    
+      body {
+        font-family: 'Poppins', sans-serif;
+        background-color: var(--bg-color);
+        color: var(--text-color);
+      }
+    
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+    
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 0;
+      }
+    
+      .logo-container {
+        display: flex;
+        align-items: center;
+      }
+    
+      .logo {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin-right: 10px;
+      }
+    
+      .store-name {
+        font-size: 1.5rem;
+        font-weight: 600;
+      }
+    
+      .search-bar {
+        flex-grow: 1;
+        margin: 0 20px;
+        position: relative;
+      }
+    
+      .search-input {
+        width: 100%;
+        padding: 12px 20px;
+        border: 2px solid var(--primary-color);
+        border-radius: 30px;
+        background-color: #fff;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+      }
+    
+      .search-input:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.3);
+      }
+    
+      .search-icon {
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--primary-color);
+      }
+    
+      .nav-icons {
+        display: flex;
+        align-items: center;
+      }
+    
+      .nav-icon {
+        margin-left: 15px;
+        cursor: pointer;
+      }
+    
+      .menu-icon, .user-icon, .cart-icon {
+        width: 24px;
+        height: 24px;
+      }
+    
+      .user-icon {
+        border-radius: 50%;
+      }
+    
+      .cart-indicator {
+        position: relative;
+      }
+    
+      .cart-count {
+        position: absolute;
+        top: -5px;
+        right: -5px;
+        background-color: var(--secondary-color);
+        color: #fff;
+        font-size: 0.7rem;
+        padding: 2px 5px;
+        border-radius: 50%;
+      }
+    
+      .main-content {
+        margin-top: 30px;
+        background-color: #fff;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+    
+      .content-wrapper {
+        display: flex;
+        height: 400px;
+      }
+    
+      .slider {
+        width: 70%;
+        position: relative;
+        overflow: hidden;
+      }
+    
+      .slide {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
+      }
+    
+      .slide.active {
+        opacity: 1;
+      }
+    
+      .slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    
+      .visitor-section {
+        width: 30%;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+    
+      .visitor-circles {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+    
+      .visitor-circle {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        margin: 5px;
+        overflow: hidden;
+        position: relative;
+      }
+    
+      .visitor-circle img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    
+      .visitor-name {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: rgba(0, 0, 0, 0.6);
+        color: #fff;
+        font-size: 0.7rem;
+        padding: 2px 0;
+        text-align: center;
+      }
+    
+      .visitor-voice {
+        background-color: var(--bg-color);
+        border-radius: 10px;
+        padding: 15px;
+        display: flex;
+        align-items: center;
+      }
+    
+      .voice-icon {
+        margin-right: 10px;
+        flex-shrink: 0;
+      }
+    
+      .visitor-message {
+        flex-grow: 1;
+      }
+    
+      .active-visitor {
+        display: flex;
+        align-items: center;
+        margin-top: 10px;
+      }
+    
+      .active-visitor-image {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin-right: 10px;
+      }
+    
+      @media (max-width: 768px) {
+        .search-bar {
+          display: none;
+        }
+    
+        .search-icon {
+          display: block;
+        }
+    
+        .content-wrapper {
+          flex-direction: column;
+          height: auto;
+        }
+    
+        .slider, .visitor-section {
+          width: 100%;
+        }
+    
+        .slider {
+          height: 300px;
+        }
+      }
+    
+      .search-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(5px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease-in-out;
+      }
+    
+      .search-overlay.active {
+        opacity: 1;
+        pointer-events: auto;
+      }
+    
+      .search-overlay-input {
+        width: 80%;
+        max-width: 500px;
+        padding: 15px 20px;
+        border: none;
+        border-radius: 30px;
+        font-size: 1.2rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+    
+      .product-listings {
+        margin-top: 30px;
+      }
+    
+      .product-listings h2 {
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+      }
+    
+      .product-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 30px;
+      }
+    
+      .product-card {
+        background-color: #fff;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+    
+      .product-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+      }
+    
+      .product-image-container {
+        position: relative;
+        padding-top: 100%;
+        overflow: hidden;
+      }
+    
+      .product-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+      }
+    
+      .product-card:hover .product-image {
+        transform: scale(1.05);
+      }
+    
+      .product-icons {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+      }
+    
+      .icon {
+        width: 36px;
+        height: 36px;
+        margin-bottom: 10px;
+        background-color: rgba(255, 255, 255, 0.9);
+        border-radius: 50%;
+        padding: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+    
+      .icon:hover {
+        background-color: #fff;
+        transform: scale(1.1);
+      }
+    
+      .bag-icon {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        top: auto;
+      }
+    
+      .product-info {
+        padding: 15px;
+        display: flex;
+        flex-direction: column;
+      }
+    
+      .product-name {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-bottom: 5px;
+      }
+    
+      .product-price {
+        font-weight: 600;
+        color: var(--primary-color);
+        margin-bottom: 10px;
+      }
+    
+      .product-actions {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: auto;
+      }
+    
+      .action-item {
+        display: flex;
+        align-items: center;
+      }
+    
+      .action-icon {
+        width: 24px;
+        height: 24px;
+        margin-right: 5px;
+      }
+    
+      .indicator {
+        font-size: 0.9rem;
+        color: #777;
+      }
+    
+      @media (max-width: 768px) {
+        .product-grid {
+          grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+          gap: 20px;
+        }
+    
+        .product-name {
+          font-size: 1rem;
+        }
+    
+        .product-price {
+          font-size: 0.9rem;
+        }
+    
+        .icon {
+          width: 20px;
+          height: 20px;
+        }
+      }
+    </style>
+    </head>
+    <body>
+      <div class="container">
+        <nav>
+          <div class="logo-container">
+            <img src="https://websim.com/modern-store/logo.svg" alt="ModernStore logo, minimalist circle design" class="logo" width="40" height="40">
+            <span class="store-name">ModernStore</span>
+          </div>
+          <div class="search-bar">
+            <input type="text" class="search-input" placeholder="Search for products...">
+            <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </div>
+          <div class="nav-icons">
+            <svg class="nav-icon menu-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+            <img src="bedroom" alt="User profile picture, abstract avatar" class="nav-icon user-icon" width="24" height="24">
+            <div class="nav-icon cart-indicator">
+              <svg class="cart-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="9" cy="21" r="1"></circle>
+                <circle cx="20" cy="21" r="1"></circle>
+                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+              </svg>
+              <span class="cart-count">3</span>
+            </div>
+          </div>
+        </nav>
+    
+        <div class="main-content">
+          <div class="content-wrapper">
+            <div class="slider">
+              <div class="slide active">
+                <img src="images/bedroom1.jpg" alt="Modern living room with sleek furniture and warm lighting" width="800" height="400">
+              </div>
+              <div class="slide">
+                <img src="images/bedroom2.jpg" alt="Stylish kitchen with marble countertops and high-end appliances" width="800" height="400">
+              </div>
+              <div class="slide">
+                <img src="images/bedroom3.jpg" alt="Cozy bedroom with minimalist decor and large windows" width="800" height="400">
+              </div>
+            </div>
+            <div class="visitor-section">
+              <div class="visitor-circles">
+                <div class="visitor-circle">
+                  <img src="https://websim.com/modern-store/visitor1.jpg" alt="Sarah, a young woman with short dark hair" width="60" height="60">
+                  <span class="visitor-name">Sarah</span>
+                </div>
+                <div class="visitor-circle">
+                  <img src="https://websim.com/modern-store/visitor2.jpg" alt="John, a middle-aged man with glasses" width="60" height="60">
+                  <span class="visitor-name">John</span>
+                </div>
+                <div class="visitor-circle">
+                  <img src="https://websim.com/modern-store/visitor3.jpg" alt="Emma, a woman with long blonde hair" width="60" height="60">
+                  <span class="visitor-name">Emma</span>
+                </div>
+                <div class="visitor-circle">
+                  <img src="https://websim.com/modern-store/visitor4.jpg" alt="Michael, a young man with a beard" width="60" height="60">
+                  <span class="visitor-name">Michael</span>
+                </div>
+                <div class="visitor-circle">
+                  <img src="https://websim.com/modern-store/visitor5.jpg" alt="Lisa, a woman with curly red hair" width="60" height="60">
+                  <span class="visitor-name">Lisa</span>
+                </div>
+              </div>
+              <div class="visitor-voice">
+                <svg class="voice-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+                  <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+                  <line x1="12" y1="19" x2="12" y2="23"></line>
+                  <line x1="8" y1="23" x2="16" y2="23"></line>
+                </svg>
+                <span class="visitor-message">I love the new collection!</span>
+                <div class="active-visitor">
+                  <img src="https://websim.com/modern-store/visitor1.jpg" alt="Sarah, a young woman with short dark hair" class="active-visitor-image" width="40" height="40">
+                  <span>Sarah</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    
+        <div class="product-listings">
+          <h2>Featured Products</h2>
+          <div class="product-grid">
+            <div class="product-card">
+              <div class="product-image-container">
+                <img src="https://websim.com/modern-store/product1.jpg" alt="Modern minimalist chair" class="product-image">
+                <div class="product-icons">
+                  <svg class="icon eye-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                  <svg class="icon bag-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <path d="M16 10a4 4 0 0 1-8 0"></path>
+                  </svg>
+                </div>
+              </div>
+              <div class="product-info">
+                <h3 class="product-name">Modern Chair</h3>
+                <p class="product-price">$199.99</p>
+                <div class="product-actions">
+                  <div class="action-item">
+                    <svg class="action-icon love-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                    </svg>
+                    <span class="indicator">24</span>
+                  </div>
+                  <div class="action-item">
+                    <svg class="action-icon share-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="18" cy="5" r="3"></circle>
+                      <circle cx="6" cy="12" r="3"></circle>
+                      <circle cx="18" cy="19" r="3"></circle>
+                      <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                      <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                    </svg>
+                    <span class="indicator">8</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="product-card">
+              <div class="product-image-container">
+                <img src="https://websim.com/modern-store/product2.jpg" alt="Stylish coffee table" class="product-image">
+                <div class="product-icons">
+                  <svg class="icon eye-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                  <svg class="icon bag-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <path d="M16 10a4 4 0 0 1-8 0"></path>
+                  </svg>
+                </div>
+              </div>
+              <div class="product-info">
+                <h3 class="product-name">Coffee Table</h3>
+                <p class="product-price">$129.99</p>
+                <div class="product-actions">
+                  <div class="action-item">
+                    <svg class="action-icon love-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                    </svg>
+                    <span class="indicator">18</span>
+                  </div>
+                  <div class="action-item">
+                    <svg class="action-icon share-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="18" cy="5" r="3"></circle>
+                      <circle cx="6" cy="12" r="3"></circle>
+                      <circle cx="18" cy="19" r="3"></circle>
+                      <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                      <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                    </svg>
+                    <span class="indicator">15</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="product-card">
+              <div class="product-image-container">
+                <img src="https://websim.com/modern-store/product3.jpg" alt="Elegant dining table" class="product-image">
+                <div class="product-icons">
+                  <svg class="icon eye-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                  <svg class="icon bag-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <path d="M16 10a4 4 0 0 1-8 0"></path>
+                  </svg>
+                </div>
+              </div>
+              <div class="product-info">
+                <h3 class="product-name">Dining Table</h3>
+                <p class="product-price">$399.99</p>
+                <div class="product-actions">
+                  <div class="action-item">
+                    <svg class="action-icon love-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                    </svg>
+                    <span class="indicator">30</span>
+                  </div>
+                  <div class="action-item">
+                    <svg class="action-icon share-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="18" cy="5" r="3"></circle>
+                      <circle cx="6" cy="12" r="3"></circle>
+                      <circle cx="18" cy="19" r="3"></circle>
+                      <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                      <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                    </svg>
+                    <span class="indicator">10</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="product-card">
+              <div class="product-image-container">
+                <img src="https://websim.com/modern-store/product4.jpg" alt="Comfortable sofa" class="product-image">
+                <div class="product-icons">
+                  <svg class="icon eye-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                  <svg class="icon bag-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <path d="M16 10a4 4 0 0 1-8 0"></path>
+                  </svg>
+                </div>
+              </div>
+              <div class="product-info">
+                <h3 class="product-name">Sofa</h3>
+                <p class="product-price">$899.99</p>
+                <div class="product-actions">
+                  <div class="action-item">
+                    <svg class="action-icon love-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                    </svg>
+                    <span class="indicator">42</span>
+                  </div>
+                  <div class="action-item">
+                    <svg class="action-icon share-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="18" cy="5" r="3"></circle>
+                      <circle cx="6" cy="12" r="3"></circle>
+                      <circle cx="18" cy="19" r="3"></circle>
+                      <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                      <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                    </svg>
+                    <span class="indicator">14</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      <div class="search-overlay">
+        <input type="text" class="search-overlay-input" placeholder="Search for products...">
+      </div>
+    
+      <script>
+        // Slider functionality
+        const slides = document.querySelectorAll('.slide');
+        let currentSlide = 0;
+    
+        function showSlide(n) {
+          slides[currentSlide].classList.remove('active');
+          currentSlide = (n + slides.length) % slides.length;
+          slides[currentSlide].classList.add('active');
+        }
+    
+        function nextSlide() {
+          showSlide(currentSlide + 1);
+        }
+    
+        setInterval(nextSlide, 5000);
+    
+        // Mobile search functionality
+        const searchIcon = document.querySelector('.search-icon');
+        const searchOverlay = document.querySelector('.search-overlay');
+        const searchOverlayInput = document.querySelector('.search-overlay-input');
+    
+        searchIcon.addEventListener('click', () => {
+          searchOverlay.classList.add('active');
+          searchOverlayInput.focus();
+        });
+    
+        searchOverlay.addEventListener('click', (e) => {
+          if (e.target === searchOverlay) {
+            searchOverlay.classList.remove('active');
+          }
+        });
+    
+        // Simulating visitor messages
+        const visitors = [
+          { name: "Sarah", image: "https://websim.com/modern-store/visitor1.jpg", message: "These prices are unbeatable!" },
+          { name: "John", image: "https://websim.com/modern-store/visitor2.jpg", message: "Just ordered my dream sofa!" },
+          { name: "Emma", image: "https://websim.com/modern-store/visitor3.jpg", message: "The quality is amazing!" },
+          { name: "Michael", image: "https://websim.com/modern-store/visitor4.jpg", message: "Can't wait for my delivery!" },
+          { name: "Lisa", image: "https://websim.com/modern-store/visitor5.jpg", message: "Best online shopping experience ever!" }
+        ];
+    
+        const visitorMessageElement = document.querySelector('.visitor-message');
+        const activeVisitorImage = document.querySelector('.active-visitor-image');
+        const activeVisitorName = document.querySelector('.active-visitor span');
+    
+        function updateVisitorMessage() {
+          const randomVisitor = visitors[Math.floor(Math.random() * visitors.length)];
+          visitorMessageElement.textContent = randomVisitor.message;
+          activeVisitorImage.src = randomVisitor.image;
+          activeVisitorImage.alt = `${randomVisitor.name}, an online shopper`;
+          activeVisitorName.textContent = randomVisitor.name;
+        }
+    
+        setInterval(updateVisitorMessage, 8000);
+      </script>
+    </body>
+    </html>
